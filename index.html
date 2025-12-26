@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Monica's JuiceBar | Mzumbe University</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <header id="main-header">
+        <div class="logo">
+            <span class="logo-j">J</span>uice<span class="logo-b">B</span>ar
+        </div>
+        <div id="cart-nav-container" class="hidden">
+            <button class="cart-link" onclick="toggleCart()">
+                 <span id="cart-count">0</span> — View Cart
+            </button>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-bg-anim">
+            <img src="images/hero-bg-juice.png" alt="" class="floating-juice-bg">
+        </div>
+        <div class="hero-content">
+            <h1>Freshness Delivered</h1>
+            <p>Sip the freshness! Bursting with real fruit flavor, our juices are freshly made, colorful, and packed with natural energy to brighten your day.</p>
+            <a href="#product-container" class="hero-btn">Order My Juice</a>
+        </div>
+    </section>
+
+    <section class="testimonials">
+    <div class="testimonial-header">
+        <h2 class="section-title">Fresh Vibes from Mzumbe</h2>
+        <p class="section-subtitle">Real feedback from our campus family</p>
+    </div>
+
+    <div class="testimonial-container">
+        <div class="testimonial-wrapper" id="testimonial-slider">
+            <div class="testimonial-card">
+                <div class="quote-icon">“</div>
+                <p>The <strong>Golden Sunrise</strong> is the only way I survive morning lectures. Monica delivers it chilled right to the lecture hall gate!</p>
+                <h4>— Baraka, Hostel 3</h4>
+            </div>
+            <div class="testimonial-card">
+                <div class="quote-icon">“</div>
+                <p>We ordered 20 bottles for our group discussion and got the <strong>10% bulk discount</strong>. Best deal in Changarawe!</p>
+                <h4>— Neema, MU Business School</h4>
+            </div>
+            <div class="testimonial-card">
+                <div class="quote-icon">“</div>
+                <p>No added sugar, just pure fruit. It's hard to find healthy drinks on campus, but Monica makes it easy.</p>
+                <h4>— Dr. Kundy, Faculty</h4>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+    <section class="how-it-works">
+        <h2 class="section-title">3 Easy Steps</h2>
+        <div class="steps-container">
+            <div class="step">
+                <div class="step-icon">🛒</div>
+                <h3>Pick Your Juice</h3>
+                <p>Select your favorite blend from our fresh menu below.</p>
+            </div>
+            <div class="step">
+                <div class="step-icon">✅</div>
+                <h3>Confirm on WA</h3>
+                <p>Your cart is sent to Monica via WhatsApp automatically.</p>
+            </div>
+            <div class="step">
+                <div class="step-icon">🛵</div>
+                <h3>Fast Delivery</h3>
+                <p>Receive your chilled juice at the hostels or campus gates.</p>
+            </div>
+            <div class="step">
+                <div class="step-icon">🤙</div>
+                <h3>Feeling confused?</h3>
+                <p>Contact us directly and ask anything, anytime—just tap the WhatsApp icon floating on your screen.</p>
+            </div>
+        </div>
+    </section>
+
+    <main id="product-container" class="product-grid"></main>
+
+    <footer class="promise-section">
+        <div class="promise-content">
+            <h2>Monica's Quality Promise</h2>
+            <p>100% Natural Fruits • No Added Sugar • Chilled Daily</p>
+            <div class="promise-grid">
+                <div class="promise-item"><span>🍎</span> Fresh Ingredients</div>
+                <div class="promise-item"><span>🧊</span> Always Chilled</div>
+                <div class="promise-item"><span>⚡</span> Fast Delivery</div>
+            </div>
+        </div>
+        <p style="margin-top: 30px; opacity: 0.6; font-size: 0.8rem;">© 2024 Monica's JuiceBar - Mzumbe University</p>
+    </footer>
+
+    <a href="https://wa.me/255714995100?text=Hello Monica, I have a question!" class="floating-wa" target="_blank">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp Support">
+    </a>
+
+    <div id="cart-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Your Order</h2>
+                <div class="header-actions">
+                    <button class="clear-cart-btn" onclick="clearCart()">Clear All</button>
+                    <span class="close-btn" onclick="toggleCart()">&times;</span>
+                </div>
+            </div>
+            
+            <div id="cart-items-list">
+                </div>
+
+            <div class="special-requests">
+                <label for="order-notes">Special Requests:</label>
+                <textarea id="order-notes" placeholder="e.g. No sugar, extra cold, delivery to Hostel 4..."></textarea>
+            </div>
+
+            <div class="modal-footer">
+                <div class="total-section">
+                    <span>Total:</span>
+                    <span id="modal-total">Tsh 0</span>
+                </div>
+                <button class="checkout-btn" onclick="checkout()">
+                    Send via WhatsApp
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div id="toast-container"></div>
+
+    <script src="script.js"></script>
+</body>
+</html>
