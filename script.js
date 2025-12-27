@@ -19,7 +19,7 @@ const flavors = [
     { id: 7, name: "Sunset Glow", price: 1500, img: "images/10.jpg", desc: "Mangoes & Oranges", available: true, status: "Bulk Discount" },
     { id: 8, name: "Golden Tropics", price: 1500, img: "images/8.jpg", desc: "Pineapple & Oranges", available: true, status: "Bulk Discount" },
     { id: 9, name: "Tropic Tango", price: 1000, img: "images/7.jpg", desc: "Mango & Passion", available: true, status: "Bulk Discount" },
-    { id: 10, name: "Pink Paradise", price: 5000, img: "images/9.jpg", desc: "Guava & Pineapple", available: false, status: "Coming Soon" },
+    { id: 10, name: "Pink Paradise", price: 1000, img: "images/9.jpg", desc: "Guava & Pineapple", available: false, status: "Coming Soon" },
     { id: 11, name: "Smooth Fiesta", price: 1500, img: "images/11.jpg", desc: "Banana, Mango & Oranges", available: false, status: "Cooming Soon" },
     { id: 12, name: "Citrus Passion", price: 1500, img: "images/12.jpg", desc: "Passion & Oranges", available: true, status: "Bulk Discount" },
     { id: 13, name: "Cool Breeze", price: 1000, img: "images/13.jpg", desc: "Watermelon & Pineapple", available: true, status: "Bulk Discount" },
