@@ -233,7 +233,7 @@ window.checkout = () => {
         return `- ${i.name} x${i.quantity}${isBulk ? ' (10% OFF)' : ''}`;
     }).join('\n');
 
-    const msg = `Hello Monica! 🥤\n\nI want to order:\n${orderItems}\n\n*Total: Tsh ${finalTotal.toLocaleString()}*\n\nSpecial Requests: ${notes || "None"}`;
+    const msg = `Hello Monica!🥤\n\nI want to order:\n${orderItems}\n\n*Total: Tsh ${finalTotal.toLocaleString()}*\n\nSpecial Requests: ${notes || "None"}`;
     window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(msg)}`, '_blank');
 };
 
