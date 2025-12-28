@@ -1,0 +1,765 @@
+/* MONICA JOSIAH'S JUICEBAR - THE ULTIMATE STYLESHEET */
+
+:root {
+    --primary: #FF8C00;    /* Juicy Orange */
+    --secondary: #2E7D32;  /* WhatsApp Green */
+    --dark: #333;
+    --light: #fff8f0;      /* Soft Peach Background */
+    --white: #ffffff;
+    --shadow: 0 10px 30px rgba(0,0,0,0.08);
+}
+
+/* --- RESET & BASE --- */
+* { box-sizing: border-box; font-family: 'Poppins', sans-serif; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { background: #fdfdfd; padding-top: 80px; overflow-x: hidden; }
+
+/* --- HEADER (FROSTED GLASS) --- */
+header {
+    position: fixed; top: 0; width: 100%; z-index: 1000;
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 15px 5%; transition: 0.3s ease;
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+header.scrolled { padding: 10px 5%; background: rgba(255, 255, 255, 0.9); box-shadow: var(--shadow); }
+
+.logo { font-size: 1.8rem; font-weight: 800; color: var(--dark); }
+.logo-j { color: var(--primary); font-size: 2.3rem; font-style: italic; }
+.logo-b { color: var(--secondary); font-size: 2.3rem; margin-left: -3px; }
+
+/* --- CLEAR ALL BUTTON STYLING --- */
+.header-actions {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.clear-cart-btn {
+    background: #fff5f5; /* Very light red tint */
+    color: #ff4d4d; /* Danger red */
+    border: 1px solid rgba(255, 77, 77, 0.2);
+    padding: 8px 16px;
+    border-radius: 12px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+/* Icon addition for "Clear All" */
+.clear-cart-btn::before {
+    content: '🗑'; /* Trash icon */
+    font-size: 0.9rem;
+}
+
+.clear-cart-btn:hover {
+    background: #ff4d4d;
+    color: white;
+    box-shadow: 0 4px 12px rgba(255, 77, 77, 0.2);
+    transform: translateY(-1px);
+}
+
+.clear-cart-btn:active {
+    transform: translateY(0) scale(0.95);
+    background: #d32f2f;
+}
+
+/* Close Button (X) styling next to it */
+.close-btn {
+    font-size: 1.8rem;
+    color: #999;
+    cursor: pointer;
+    transition: color 0.2s;
+    line-height: 1;
+}
+
+.close-btn:hover {
+    color: var(--dark);
+}
+
+#cart-count { background: white; color: var(--primary); min-width: 22px; height: 22px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.75rem; }
+.bump { animation: bump 0.3s ease-out; }
+@keyframes bump { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.2); } }
+
+/* --- HERO SECTION --- */
+.hero {
+    position: relative; text-align: center; padding: 100px 20px;
+    background: var(--light); overflow: hidden;
+    display: flex; flex-direction: column; align-items: center; min-height: 450px;
+}
+.hero-bg-anim { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 1; opacity: 0.15; pointer-events: none; }
+.floating-juice-bg { width: 250px; animation: floatY 5s ease-in-out infinite; }
+@keyframes floatY { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-30px); } }
+
+.hero-content { position: relative; z-index: 10; }
+.hero h1 { font-size: 2.8rem; line-height: 1.1; margin-bottom: 15px; color: var(--dark); }
+.hero-btn { display: inline-block; margin-top: 25px; padding: 16px 45px; background: var(--primary); color: white; text-decoration: none; border-radius: 50px; font-weight: 600; box-shadow: 0 10px 25px rgba(255, 140, 0, 0.3); }
+
+/* --- 3-STEP GUIDE --- */
+.how-it-works { padding: 60px 5%; text-align: center; background: white; }
+.section-title { font-size: 1.8rem; margin-bottom: 40px; font-weight: 800; }
+.steps-container { display: flex; justify-content: space-around; flex-wrap: wrap; gap: 30px; }
+.step { flex: 1; min-width: 250px; padding: 20px; }
+.step-icon { font-size: 3rem; margin-bottom: 15px; }
+
+/* --- PRODUCT GRID & SCROLL REVEAL --- */
+.product-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 30px; padding: 60px 5%; }
+.product-card {
+    background: white; border-radius: 30px; padding: 25px; text-align: center;
+    position: relative; box-shadow: var(--shadow);
+    /* Reveal Initial State */
+    opacity: 0; transform: translateX(-50px); transition: all 0.8s cubic-bezier(0.2, 1, 0.3, 1);
+}
+.product-card.appear { opacity: 1; transform: translateX(0); }
+
+.product-card img { width: 100%; height: 220px; object-fit: contain; margin-bottom: 15px; }
+
+/* --- BADGES --- */
+.status-badge { position: absolute; top: 20px; left: 20px; padding: 5px 12px; border-radius: 50px; font-size: 0.7rem; font-weight: 800; text-transform: uppercase; z-index: 10; }
+.bulk-discount { background: #fff3e0; color: #e65100; border: 1px solid #ffcc80; }
+.coming-soon { background: #eceff1; color: #455a64; }
+.limited { background: #f3e5f5; color: #7b1fa2; }
+
+.sold-out-stamp { position: absolute; top: 40%; left: 50%; transform: translate(-50%, -50%) rotate(-15deg); background: rgba(211, 47, 47, 0.9); color: white; padding: 8px 20px; font-weight: 900; z-index: 20; border-radius: 4px; }
+
+/* --- CART MODAL --- */
+.modal { display: none; position: fixed; z-index: 2000; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.4); backdrop-filter: blur(8px); }
+.modal-content { background: white; margin: 5vh auto; width: 92%; max-width: 500px; border-radius: 35px; padding: 30px; position: relative; max-height: 90vh; overflow-y: auto; }
+
+.cart-item { display: flex; justify-content: space-between; align-items: center; padding: 15px 0; border-bottom: 1px solid #eee; }
+.quantity-controls { display: flex; align-items: center; gap: 10px; background: #f8f8f8; padding: 5px; border-radius: 12px; }
+.qty-btn { width: 30px; height: 30px; border: none; background: white; border-radius: 8px; font-weight: bold; cursor: pointer; }
+
+.special-requests textarea { width: 100%; height: 80px; padding: 15px; border-radius: 15px; border: 1px solid #ddd; margin: 15px 0; resize: none; font-family: inherit; }
+.savings-line { display: flex; justify-content: space-between; padding: 15px; background: #e8f5e9; color: var(--secondary); border-radius: 15px; margin-bottom: 15px; font-weight: 700; }
+.checkout-btn { width: 100%; background: var(--secondary); color: white; border: none; padding: 18px; border-radius: 20px; font-weight: 700; font-size: 1.1rem; cursor: pointer; box-shadow: 0 10px 20px rgba(46, 125, 50, 0.2); }
+
+/* --- FLOATING WA & TOAST --- */
+.floating-wa { position: fixed; bottom: 25px; right: 25px; width: 60px; height: 60px; background: #25D366; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 5px 15px rgba(0,0,0,0.2); z-index: 1000; }
+.floating-wa img { width: 35px; }
+
+#toast-container { position: fixed; bottom: 100px; left: 50%; transform: translateX(-50%); z-index: 3000; }
+.toast { background: var(--dark); color: white; padding: 12px 30px; border-radius: 50px; font-size: 0.9rem; box-shadow: var(--shadow); margin-bottom: 10px; }
+
+/* --- PROMISE FOOTER --- */
+.promise-section { background: var(--dark); color: white; padding: 60px 5%; text-align: center; }
+.promise-grid { display: flex; justify-content: center; gap: 40px; flex-wrap: wrap; margin-top: 30px; }
+.promise-item span { display: block; font-size: 2rem; margin-bottom: 10px; }
+
+.hidden { display: none !important; }
+
+/* --- ENHANCED TESTIMONIALS --- */
+.testimonial-container {
+    padding: 20px 0;
+    position: relative;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+/* Center-aligned Campus Buttons */
+.campus-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center; /* Centers items horizontally */
+    padding: 14px 20px;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    color: white;
+    width: 100%;
+    max-width: 400px; /* Prevents stretching too wide on desktop */
+    margin: 0 auto;   /* Centers the button itself in the container */
+}
+
+.campus-icon {
+    font-size: 1.5rem;
+    margin-right: 12px;
+    display: flex;
+    align-items: center;
+}
+
+.campus-text {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* Keeps text left-aligned relative to itself */
+    text-align: left;
+}
+
+.campus-title {
+    font-weight: 800;
+    font-size: 1rem;
+    line-height: 1.2;
+}
+
+.campus-sub {
+    font-size: 0.75rem;
+    opacity: 0.9;
+}
+
+/* Container for buttons */
+.checkout-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centers buttons in the modal on desktop */
+    gap: 12px;
+    width: 100%;
+}
+
+
+.testimonial-wrapper {
+    display: flex;
+    gap: 20px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    padding: 20px;
+    scrollbar-width: none; /* Hide for Firefox */
+}
+
+.testimonial-wrapper::-webkit-scrollbar { display: none; } /* Hide for Chrome */
+
+.testimonial-card {
+    min-width: 85%; /* Shows a peek of the next card on mobile */
+    background: white;
+    padding: 30px;
+    border-radius: 25px;
+    scroll-snap-align: center;
+    box-shadow: 0 10px 25px rgba(255, 140, 0, 0.1);
+    border: 1px solid #fff3e0;
+    position: relative;
+    transition: 0.3s;
+}
+/* --- CENTERED TESTIMONIALS --- */
+.testimonials {
+    padding: 80px 5%;
+    background: #ffffff;
+    text-align: center; /* Centers the title and subtitle */
+}
+
+.testimonial-header {
+    margin-bottom: 40px;
+}
+
+.section-subtitle {
+    color: #888;
+    font-size: 0.9rem;
+    margin-top: -10px;
+}
+
+.testimonial-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    overflow: hidden; /* Clips the overflow of the wrapper */
+}
+
+.testimonial-wrapper {
+    display: flex;
+    gap: 25px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    padding: 20px 0;
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+}
+
+/* For desktops: center the cards if there's space */
+@media (min-width: 1024px) {
+    .testimonial-wrapper {
+        justify-content: center; 
+    }
+}
+
+.testimonial-wrapper::-webkit-scrollbar {
+    display: none; /* Hide scrollbar for Chrome, Safari and Opera */
+}
+
+.testimonial-card {
+    min-width: 300px; /* Base size */
+    max-width: 400px;
+    background: #fff;
+    padding: 40px 30px;
+    border-radius: 25px;
+    scroll-snap-align: center; /* Locks the card to the middle of the screen */
+    box-shadow: 0 15px 35px rgba(255, 140, 0, 0.1);
+    border: 1px solid #fff3e0;
+    transition: transform 0.3s ease;
+    flex-shrink: 0;
+}
+
+/* Hover effect to make it feel "Alive" */
+.testimonial-card:hover {
+    transform: translateY(-10px);
+}
+
+.quote-icon {
+    font-size: 5rem;
+    color: var(--primary);
+    opacity: 0.08;
+    position: absolute;
+    top: 5px;
+    left: 20px;
+    font-family: 'Georgia', serif;
+}
+
+.testimonial-card p {
+    font-size: 1.05rem;
+    line-height: 1.6;
+    color: #444;
+    margin-bottom: 20px;
+}
+
+.testimonial-card h4 {
+    font-size: 0.85rem;
+    color: var(--secondary);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+
+.quote-icon {
+    font-size: 4rem;
+    color: var(--primary);
+    opacity: 0.1;
+    position: absolute;
+    top: 10px;
+    left: 20px;
+    font-family: serif;
+}
+
+.testimonial-card p {
+    font-style: italic;
+    color: #555;
+    line-height: 1.6;
+    margin-bottom: 15px;
+    position: relative;
+    z-index: 2;
+}
+
+.testimonial-card h4 {
+    color: var(--secondary);
+    font-weight: 700;
+    font-size: 0.9rem;
+}
+/* --- THE ADD TO ORDER BUTTON --- */
+.add-btn {
+    position: relative;
+    width: 100%;
+    padding: 16px;
+    margin-top: 15px;
+    background: var(--dark); /* Professional Slate Black */
+    color: white;
+    border: none;
+    border-radius: 18px;
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    overflow: hidden;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+}
+
+/* Hover Effect: Changes to Monica's Primary Orange */
+.add-btn:hover:not(:disabled) {
+    background: var(--primary);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(255, 140, 0, 0.3);
+}
+
+/* Active State: "Press" Effect */
+.add-btn:active:not(:disabled) {
+    transform: translateY(1px) scale(0.98);
+}
+
+/* "Sold Out" or "Coming Soon" styling */
+.add-btn:disabled {
+    background: #e0e0e0;
+    color: #9e9e9e;
+    cursor: not-allowed;
+    border: 1px dashed #bdbdbd;
+}
+
+/* Icon styling inside button */
+.add-btn::before {
+    content: '+';
+    font-size: 1.4rem;
+    font-weight: 400;
+    margin-right: 4px;
+}
+
+/* --- THE BUTTON SHINE EFFECT --- */
+/* A subtle light sweep that passes over the button every few seconds */
+.add-btn::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -60%;
+    width: 20%;
+    height: 200%;
+    background: rgba(255, 255, 255, 0.2);
+    transform: rotate(30deg);
+    transition: all 0.5s;
+}
+
+.add-btn:hover::after {
+    left: 120%;
+}
+
+
+/* --- MODERN HEADER CART WITH ICON --- */
+.cart-link {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: linear-gradient(135deg, #FF8C00, #FF4500);
+    color: white;
+    border: none;
+    padding: 10px 22px;
+    border-radius: 50px;
+    font-weight: 700;
+    cursor: pointer;
+    box-shadow: 0 10px 20px rgba(255, 140, 0, 0.3);
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+/* Custom Shopping Bag Icon using CSS Shapes */
+.cart-link::before {
+    content: '';
+    display: inline-block;
+    width: 18px;
+    height: 18px;
+    background: white;
+    /* This creates a shopping bag silhouette */
+    mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M19 7h-3c0-2.21-1.79-4-4-4S8 4.79 8 7H5c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V9c0-1.1-.9-2-2-2zm-7-2c1.1 0 2 .9 2 2H10c0-1.1.9-2 2-2z'/%3E%3C/svg%3E") no-repeat center;
+    -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M19 7h-3c0-2.21-1.79-4-4-4S8 4.79 8 7H5c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V9c0-1.1-.9-2-2-2zm-7-2c1.1 0 2 .9 2 2H10c0-1.1.9-2 2-2z'/%3E%3C/svg%3E") no-repeat center;
+}
+
+/* SUCCESS STATE FOR GRID BUTTONS */
+.add-btn.success {
+    background: #2E7D32 !important; /* WhatsApp Green */
+    transform: scale(1.05);
+}
+
+/* --- MODERN COLOR PALETTE --- */
+:root {
+    --primary-orange: #ff7e5f;
+    --secondary-orange: #feb47b;
+    --juice-green: #2ecc71;
+    --dark-text: #2c3e50;
+    --light-bg: #fdfbfb;
+    --white: #ffffff;
+    --shadow: 0 10px 30px rgba(0,0,0,0.08);
+}
+
+/* --- THE "GLASSMORPHISM" TIMER --- */
+#offer-timer {
+    background: linear-gradient(135deg, var(--primary-orange), var(--secondary-orange));
+    color: white;
+    padding: 16px;
+    font-weight: 700;
+    text-align: center;
+    letter-spacing: 0.8px;
+    box-shadow: 0 4px 15px rgba(255, 126, 95, 0.3);
+    border-bottom: 2px solid rgba(255,255,255,0.2);
+    font-size: 1rem;
+    position: sticky;
+    top: 0;
+    z-index: 2000;
+    backdrop-filter: blur(8px); /* Subtle blur for pro look */
+    text-transform: uppercase;
+    display: none; /* JS will reveal this */
+}
+
+.discount-active {
+   text-shadow: 0 0 10px rgba(46, 204, 113, 0.8);
+   font-size = 1.1rem
+}
+
+/* --- Campus Button Styling --- */
+.checkout-section {
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.selection-help {
+    text-align: center;
+    font-size: 0.85rem;
+    font-weight: bold;
+    color: #666;
+    margin: 0;
+}
+
+.campus-btn {
+    display: flex;
+    align-items: center;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-align: left;
+    color: white;
+}
+
+.campus-icon {
+    font-size: 1.5rem;
+    margin-right: 15px;
+}
+
+.campus-text {
+    display: flex;
+    flex-direction: column;
+}
+
+.campus-title {
+    font-weight: 800;
+    font-size: 1rem;
+}
+
+.campus-sub {
+    font-size: 0.7rem;
+    opacity: 0.9;
+}
+
+.mzumbe-theme { background: linear-gradient(135deg, #ff7e5f, #feb47b); }
+.sua-theme { background: linear-gradient(135deg, #2ecc71, #27ae60); }
+
+.campus-btn:hover {
+    transform: translateY(-2px);
+    filter: brightness(1.1);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+/* --- Notes Area --- */
+.notes-container { padding: 10px 15px; }
+.notes-container label { font-size: 0.9rem; font-weight: bold; color: #555; display: block; }
+
+#order-notes {
+    width: 100%;
+    height: 70px;
+    border-radius: 12px;
+    border: 1px solid #ddd;
+    padding: 10px;
+    margin-top: 5px;
+    font-family: inherit;
+    resize: none;
+    outline: none;
+    transition: 0.3s;
+}
+
+/* 1. Make the Offer Banner Stationary at the very top */
+#offer-timer {
+    position: sticky;
+    top: 0;
+    z-index: 1100; /* Higher than the header */
+    width: 100%;
+    background: #FF8C00;
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+    font-weight: bold;
+    font-size: 0.9rem;
+}
+
+/* 2. Adjust the Header to stay right below the banner */
+#main-header {
+    position: sticky;
+    top: 0; /* Default position */
+    z-index: 1000;
+    background: white;
+    transition: all 0.3s ease;
+}
+
+/* 3. The Magic Trick: When the banner is visible, 
+      the header needs to stick below it */
+#offer-timer:not([style*="display: none"]) + #main-header {
+    top: 40px; /* Adjust this number to match the exact height of your banner */
+}
+
+/* Ensure the body doesn't jump */
+body {
+    margin: 0;
+    padding: 0;
+}
+
+/* 1. The Header stays at the very top */
+#main-header {
+    position: sticky;
+    top: 0;
+    z-index: 1100; /* Highest priority */
+    background: white;
+    height: 70px; /* Adjust this to match your actual header height */
+    display: flex;
+    align-items: center;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+/* 2. The Offer Banner stays sticky RIGHT BELOW the header */
+#offer-timer {
+    position: sticky;
+    top: 70px; /* This MUST match the height of your header */
+    z-index: 1000;
+    width: 100%;
+    background: #FF8C00;
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+    font-weight: 800;
+    font-size: 0.85rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+/* 3. Smooth scrolling for the whole page */
+html {
+    scroll-behavior: smooth;
+}
+
+/* 4. Add padding to the first section so it's not hidden under the sticky bars */
+.hero {
+    margin-top: 20px;
+}
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-5px); }
+    75% { transform: translateX(5px); }
+}
+
+.shake {
+    animation: shake 0.2s ease-in-out 0s 2;
+    border: 2px solid #ff4d4d !important;
+}
+.discount-alert {
+    margin: 10px;
+    padding: 10px;
+    border-radius: 8px;
+    font-size: 0.85rem;
+    text-align: center;
+    animation: fadeIn 0.3s ease;
+}
+
+/* Green style for when discount is active */
+.discount-alert.active {
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+    font-weight: 600;
+}
+
+/* Orange/Yellow style for when they are close */
+.discount-alert.pending {
+    background-color: #fff3cd;
+    color: #856404;
+    border: 1px solid #ffeeba;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-5px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.floating-support-container {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    z-index: 2000;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 15px;
+}
+
+.support-menu {
+    display: none; /* Hidden by default */
+    flex-direction: column;
+    gap: 10px;
+    animation: slideUp 0.3s ease-out;
+}
+
+.support-menu.active {
+    display: flex;
+}
+
+.support-item {
+    text-decoration: none;
+    color: white;
+    padding: 12px 20px;
+    border-radius: 50px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    white-space: nowrap;
+    transition: transform 0.2s;
+}
+
+.support-item:hover { transform: scale(1.05); }
+
+.mzumbe-bg { background: linear-gradient(135deg, #ff7e5f, #feb47b); }
+.sua-bg { background: linear-gradient(135deg, #2ecc71, #27ae60); }
+
+.floating-wa-toggle {
+    width: 60px;
+    height: 60px;
+    background-color: #25d366;
+    border-radius: 50%;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    position: relative;
+}
+
+.floating-wa-toggle img { width: 35px; }
+
+/* Pulse effect to attract attention */
+.pulse-ring {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    border: 4px solid #25d366;
+    animation: pulse-ring 2s infinite;
+}
+
+@keyframes slideUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes pulse-ring {
+    0% { transform: scale(0.8); opacity: 0.8; }
+    100% { transform: scale(1.5); opacity: 0; }
+}
+#payment-summary {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    animation: fadeIn 0.3s ease;
+}
+
+#modal-total {
+    letter-spacing: -1px;
+    /* Adding a small "pop" animation when the price changes */
+    transition: all 0.2s ease;
+}
+
+
+
+
